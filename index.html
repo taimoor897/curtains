@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FabricFinishes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="fav1.png">
+</head>
+<body>
+    <!-- Curtain Opening Animation -->
+<div class="curtain-wrapper">
+    <div class="curtain left-curtain"></div>
+    <div class="curtain right-curtain"></div>
+</div>
+
+    <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">FabricFinshes</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#videos">Videos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="c1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Premium Custom Curtains</h1>
+            <p>Designed. Crafted. Installed.</p>
+            <a href="#contact" class="btn">Get a Quote</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Custom Curtains</h3>
+                <p>Made-to-measure luxury curtains for every space.</p>
+            </div>
+            <div class="card">
+                <h3>Blinds & Shades</h3>
+                <p>Modern blinds with smooth finish and durability.</p>
+            </div>
+            <div class="card">
+                <h3>Installation</h3>
+                <p>Professional installation at your doorstep.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="stats section">
+    <div class="stats-container">
+
+        <div class="stat">
+            <h2 class="counter" data-target="500">0</h2>
+            <p>Projects Completed</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="10">0</h2>
+            <p>Years Experience</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="100">0</h2>
+            <p>Happy Clients %</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="24">0</h2>
+            <p>Hour Support</p>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Gallery -->
+   <section id="gallery" class="section dark">
+    <h2>Our Work</h2>
+    <div class="gallery">
+
+        <div class="fabric">
+            <img src="p1.jpeg">
+        </div>
+
+        <div class="fabric">
+            <img src="p2.jpeg">
+        </div>
+
+        <div class="fabric">
+            <img src="p3.jpeg">
+        </div>
+
+        <div class="fabric">
+            <img src="p4.jpeg">
+        </div>
+
+    </div>
+</section>
+
+    <!-- Videos Section -->
+  <section id="videos" class="section">
+    <h2>Project Videos</h2>
+
+    <div class="video-grid">
+
+        <div class="tv-frame">
+            <div class="tv-screen">
+                <video controls>
+                    <source src="c2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="tv-stand"></div>
+        </div>
+
+        <div class="tv-frame">
+            <div class="tv-screen">
+                <video controls>
+                    <source src="c3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="tv-stand"></div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Contact -->
+    <section id="contact" class="section dark">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/923024640368?text=Hello%20I%20want%20a%20quote%20for%20curtains"
+   class="whatsapp-float"
+   target="_blank">
+   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
+
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+
+
+<script>
+window.addEventListener("load", function() {
+    setTimeout(function() {
+        document.querySelector(".curtain-wrapper").classList.add("open");
+    }, 500); // delay before opening
+});
+</script>
+
+
+
+<script>
+const counters = document.querySelectorAll('.counter');
+let started = false;
+
+function startCounting() {
+
+    if (started) return;
+
+    const statsSection = document.querySelector('.stats');
+    const sectionTop = statsSection.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (sectionTop < screenHeight - 100) {
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const speed = target / 100;
+
+            const updateCount = () => {
+                if (count < target) {
+                    count += speed;
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+
+        started = true;
+    }
+}
+
+window.addEventListener('scroll', startCounting);
+</script>
+
+</body>
+</html>

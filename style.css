@@ -1,0 +1,673 @@
+/* ================= CURTAIN INTRO ================= */
+
+.curtain-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.curtain {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #7a1f1f,
+        #a83232,
+        #7a1f1f
+    );
+    box-shadow: inset -10px 0 30px rgba(0,0,0,0.4);
+    transition: transform 2s ease-in-out;
+}
+
+.left-curtain {
+    transform: translateX(0);
+}
+
+.right-curtain {
+    transform: translateX(0);
+}
+
+/* When Open */
+.curtain-wrapper.open .left-curtain {
+    transform: translateX(-100%);
+}
+
+.curtain-wrapper.open .right-curtain {
+    transform: translateX(100%);
+}
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f8f8f8;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+/* ================= NAVBAR ================= */
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Nav Links */
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: gold;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-content {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 50px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: gold;
+    color: black;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+}
+
+/* Sections */
+.section {
+    padding: 100px 50px;
+    text-align: center;
+}
+
+.section.dark {
+    background: #111;
+    color: white;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 300px;
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.dark .card {
+    background: #222;
+}
+
+/* ================= PREMIUM FABRIC GALLERY ================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Fabric Container */
+.fabric {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    height: 300px;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Image Styling */
+.fabric img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+/* Light Sweep Effect */
+.fabric::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.05),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: 0.8s;
+}
+
+/* Hover Effects */
+.fabric:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+}
+
+.fabric:hover img {
+    transform: scale(1.1) rotate(1deg);
+    filter: brightness(1.08) contrast(1.05);
+}
+
+.fabric:hover::after {
+    left: 150%;
+}
+
+/* Videos */
+.video-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.video-card video {
+    width: 400px;
+    border-radius: 20px;
+    transition: 0.4s;
+    height: 300px;
+}
+
+.video-card video:hover {
+    transform: scale(1.05);
+}
+
+/* Contact */
+.contact-form {
+    max-width: 500px;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+.contact-form textarea {
+    height: 120px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* WhatsApp Floating Button */
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+
+
+
+
+
+/* ============================= */
+/* ====== LARGE LAPTOPS ======== */
+/* ============================= */
+@media (max-width: 1200px) {
+
+    .hero-content h1 {
+        font-size: 45px;
+    }
+
+    .cards {
+        gap: 20px;
+    }
+
+    .video-card video {
+        width: 350px;
+    }
+}
+
+
+/* ============================= */
+/* ====== TABLETS ============== */
+/* ============================= */
+@media (max-width: 992px) {
+
+    .navbar {
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+    /* Stack cards */
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    /* Stack videos */
+    .video-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-card video {
+        width: 80%;
+    }
+}
+
+
+/* ============================= */
+/* ====== MOBILE DEVICES ======= */
+/* ============================= */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .navbar nav {
+        margin-top: 10px;
+    }
+
+    .navbar nav a {
+        margin: 0 10px;
+        font-size: 14px;
+    }
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+
+    /* Sections */
+    .section {
+        padding: 70px 20px;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact form */
+    .contact-form {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* WhatsApp button smaller */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float img {
+        width: 28px;
+        height: 28px;
+    }
+      .hero-video{
+        height: 600px;
+
+    }
+}
+
+
+/* ============================= */
+/* ====== SMALL PHONES ========= */
+/* ============================= */
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 22px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .navbar nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    .video-card video {
+        width: 95%;
+        
+    }
+     .hero-video{
+        height: 600px;
+
+    }
+   
+
+
+}
+
+
+
+
+
+
+
+/* ================= MOBILE NAV ================= */
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+        margin-top: 15px;
+        
+    }
+
+    .navbar nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .navbar nav.active {
+        max-height: 300px;
+    }
+
+    .navbar nav a {
+        font-size: 18px;
+    }
+}
+
+
+
+
+/* iPhone SE & small phones */
+@media (max-width: 375px) {
+      .hero-video{
+        height: 500px;
+
+    }
+
+  
+}
+
+
+@media (max-width: 390px) {
+      .hero-video{
+        height: 500px;
+
+    }
+
+  
+}
+
+
+
+
+
+
+/* ================= TV FRAME STYLE ================= */
+
+.video-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+/* TV Body */
+.tv-frame {
+    position: relative;
+    background: #111;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.5),
+        inset 0 0 10px rgba(255,255,255,0.05);
+    transition: transform 0.4s ease;
+}
+
+.tv-frame:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+/* Screen Area */
+.tv-screen {
+    background: black;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.tv-screen video {
+    display: block;
+    width: 450px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* TV Stand */
+.tv-stand {
+    width: 120px;
+    height: 10px;
+    background: #222;
+    margin: 15px auto 0;
+    border-radius: 5px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .tv-screen video {
+        width: 70vw;
+        height: 200px;
+    }
+
+    .video-grid {
+        gap: 40px;
+    }
+}
+
+
+
+
+
+
+
+/* ================= STATS SECTION ================= */
+
+.stats {
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.stat {
+    min-width: 150px;
+}
+
+.stat h2 {
+    font-size: 48px;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    font-size: 16px;
+    opacity: 0.8;
+}
