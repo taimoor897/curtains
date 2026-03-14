@@ -184,18 +184,20 @@ body {
 
 /* Cards */
 .cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+    
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+        gap:30px;
+        margin-top:40px;
+        
 }
 
 .card {
     background: white;
     padding: 30px;
     border-radius: 20px;
-    width: 300px;
     transition: 0.4s;
+    width: 100%;
 }
 
 .card:hover {
@@ -352,6 +354,67 @@ body {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
 }
+
+
+
+
+.faq-container{
+    max-width:800px;
+    margin:auto;
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    }
+    
+    .faq{
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+    }
+    
+    .dark .faq{
+    background:#1f1f1f;
+    }
+    
+    .faq-question{
+    width:100%;
+    padding:20px;
+    font-size:17px;
+    text-align:left;
+    background:none;
+    border:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:600;
+    color:inherit;
+    }
+    
+    .faq-question span{
+    font-size:24px;
+    transition:0.3s;
+    }
+    
+    .faq.active span{
+    transform:rotate(45deg);
+    }
+    
+    .faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+    padding:0 20px;
+    }
+    
+    .faq-answer p{
+    padding:15px 0;
+    line-height:1.6;
+    opacity:0.9;
+    }
 
 
 
@@ -694,3 +757,37 @@ body {
     .hamburger.active span:nth-child(3){
     transform: rotate(-45deg) translateY(-8px);
     }
+
+
+
+
+    .testimonial {
+        text-align:center;
+        }
+        
+        .stars{
+        color:gold;
+        font-size:22px;
+        margin-bottom:10px;
+        }
+        
+        .review{
+        font-style:italic;
+        line-height:1.6;
+        margin-bottom:15px;
+        }
+        
+        .testimonial h4{
+        font-weight:normal;
+        opacity:0.8;
+        }
+
+        .testimonial:hover{
+            box-shadow:0 15px 35px rgba(0,0,0,0.25);
+            transform:translateY(-8px);
+            }
+
+
+
+            
+ 
