@@ -416,6 +416,89 @@ body {
     opacity:0.9;
     }
 
+    .wave-divider{
+        line-height:0;
+        margin-top:-1px;
+        }
+        
+        .wave-divider svg{
+        display:block;
+        width:100%;
+        height:80px;
+        }
+
+        /* ================= SERVICE AREAS ================= */
+
+.areas-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:30px;
+    margin-top:50px;
+    }
+    
+    .area-card{
+    background:white;
+    padding:35px 25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    transition:0.4s ease;
+    position:relative;
+    overflow:hidden;
+    }
+    
+    .dark .area-card{
+    background:#1f1f1f;
+    }
+    
+    .area-icon{
+    font-size:35px;
+    display:block;
+    margin-bottom:15px;
+    color:gold;
+    }
+    
+    .area-card h3{
+    margin-bottom:10px;
+    }
+    
+    .area-card p{
+    font-size:14px;
+    line-height:1.5;
+    opacity:0.85;
+    }
+    
+    /* Hover Animation */
+    
+    .area-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 25px 40px rgba(0,0,0,0.25);
+    }
+    
+    /* Glow Border Animation */
+    
+    .area-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,215,0,0.35),
+    transparent
+    );
+    transition:0.7s;
+    }
+    
+    .area-card:hover::before{
+    left:100%;
+    }
+
+   
+  
 
 
 
